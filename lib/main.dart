@@ -1,3 +1,4 @@
+import 'package:agent_app/constants/styles.dart';
 import 'package:agent_app/screens/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,9 +14,7 @@ class MyApp extends StatelessWidget {
     ));
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: Style.avnuTheme,
       home: MainView(),
     );
   }

@@ -1,20 +1,6 @@
 import 'package:agent_app/widgets/activity_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:outline_material_icons/outline_material_icons.dart';
 
-enum ActivityType { note, checkin, document }
-
-final activityIcon = {
-  ActivityType.checkin: OMIcons.personPinCircle,
-  ActivityType.note: OMIcons.create,
-  ActivityType.document: OMIcons.description,
-};
-
-final activityIconColor = {
-  ActivityType.checkin: Colors.blue,
-  ActivityType.note: Colors.yellow,
-  ActivityType.document: Colors.green,
-};
 class Activities extends StatefulWidget {
   Activities({Key key}) : super(key: key);
 
@@ -183,11 +169,13 @@ class _ActivitiesState extends State<Activities> {
         children: <Widget>[
           Container (
             alignment: Alignment.topLeft,
-            margin: EdgeInsets.only(bottom: 36.0,),
+            margin: EdgeInsets.only(bottom: 24.0,),
             child: Text('updates'.toUpperCase(), style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w400, color: textColor)),
           ),
-          ListView(
-            children: activityItems ?? Center(child: Container(child: Text('No activities yet!'),),),
+          Expanded(
+            child: ListView(
+              children: activityItems ?? Center(child: Container(child: Text('No activities yet!'),),),
+            ),
           )
         ],
       ),
