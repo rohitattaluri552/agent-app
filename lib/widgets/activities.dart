@@ -159,7 +159,7 @@ class _ActivitiesState extends State<Activities> {
     },
   ];
 
-  final activityItems = _activities.map((activity) => ActivityTile(activity:activity)).toList();
+  final activityItems = _activities.map((activity) => ActivityTile(activity: activity)).toList();
 
     return Container(
       padding: EdgeInsets.only(top: 20.0, left: 16.0,right: 16.0,),

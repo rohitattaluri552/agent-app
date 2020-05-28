@@ -41,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
 
     final eventDetails = [
       {'title': 'EiffelTower', 'imageUrl': 'https://bit.ly/2ZnjgOa', 'suburb': 'Paris', 'eventTime': 'WED 22 JUL - 9:40 AM'},
-      {'title': 'EiffelTower', 'imageUrl': 'https://bit.ly/3bM2M4Q', 'suburb': 'Paris', 'eventTime': 'FRI 16 AUG - 15:30 AM'},
+      {'title': 'EiffelTower', 'imageUrl': 'https://ofi-documents-dev.s3-ap-southeast-2.amazonaws.com/4.jpg', 'suburb': 'Paris', 'eventTime': 'FRI 16 AUG - 15:30 AM'},
       {'title': 'EiffelTower', 'imageUrl': 'https://bit.ly/2ZoS1Tv', 'suburb': 'Paris', 'eventTime': 'WED 20 JUNE - 8:00 AM'},
     ];
 

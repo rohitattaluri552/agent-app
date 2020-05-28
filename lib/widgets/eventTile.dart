@@ -66,36 +66,45 @@ class _EventTileState extends State<EventTile> {
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Image.network(
             widget.event['imageUrl'],
-            fit: BoxFit.fitWidth,
+            fit: BoxFit.fill,
             width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(4.0),
           ),
-          elevation: 5,
         ),
       );
     }
 
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          
-        });
-      },
-      child: Stack(
-        children:[
-          Container(
-            padding: EdgeInsets.only(right: 8.0),
-            child: Stack(
-              children: <Widget>[
-                eventImage(),
-                Positioned(child: eventAddress,bottom: 0,left: 0,),
-                Positioned(child: eventTime, top: 4.0)
-              ],
-            ),
+      onTap: () {},
+      child: AspectRatio (
+        aspectRatio: 16 / 9,
+        child: Container(
+          padding: EdgeInsets.only(right: 8.0),
+          child: Stack(
+            children:[
+              eventImage(),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.0),
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.transparent,
+                      Color.fromRGBO(0, 0, 0, 0.80),
+                    ],
+                    stops: [.5,1.0],
+                  ),
+                ),
+              ),
+              Positioned(child: eventAddress,bottom: 0,left: 0,),
+              Positioned(child: eventTime, top: 4.0)
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
