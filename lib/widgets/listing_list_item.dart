@@ -5,12 +5,12 @@ class ListingListItem extends StatelessWidget {
   final double cardHeight = 120.0;
   ListingListItem({this.listing});
   final listing;
+  
   @override
   Widget build(BuildContext context) {
     if (listing == null) {
       return Container();
     }
-    final theme = Theme.of(context);
 
     bool isNotEmpty(String s) => s?.trim()?.isNotEmpty ?? false;
 

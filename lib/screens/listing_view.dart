@@ -224,7 +224,7 @@ class _ListingViewState extends State<ListingView> {
 
     return Scaffold (
       appBar: TitleBar(title: 'Listings'),
-      body: ListView(
+      body: ListView (
         padding: EdgeInsets.only(top: 16.0),
         scrollDirection: Axis.vertical,
         children: listingsWithSectionHeader ?? Center(child: Container(child: Text('No activities yet!'),),),
