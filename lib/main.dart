@@ -1,7 +1,9 @@
 import 'package:agent_app/constants/styles.dart';
+import 'package:agent_app/screens/listing_item_view.dart';
 import 'package:agent_app/screens/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -16,6 +18,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: Style.avnuTheme,
       home: MainView(),
+      routes: {
+        ListingItemView.routeName: (context) => ListingItemView(),
+      }
     );
   }
 }

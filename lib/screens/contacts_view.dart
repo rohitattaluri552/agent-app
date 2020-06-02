@@ -3,7 +3,8 @@ import 'package:agent_app/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 
 class ContactsView extends StatefulWidget {
-  ContactsView({Key key}) : super(key: key);
+  ContactsView({this.isScaffoldReq,Key key}) : super(key: key);
+  final bool isScaffoldReq;
 
   @override
   _ContactsViewState createState() => _ContactsViewState();
@@ -161,24 +162,34 @@ class _ContactsViewState extends State<ContactsView> {
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: TitleBar(title: 'Contacts'),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: ListView.builder(
-                itemCount: contactsList.length,
-                itemBuilder: (BuildContext ctxt, int index) {
-                  return  ContactListItem(contactsList[index]);
-                }
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    return widget.isScaffoldReq == null
+            ?  Scaffold(
+                appBar: TitleBar(title: 'Contacts'),
+                body: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: ListView.builder(
+                          itemCount: contactsList.length,
+                          itemBuilder: (BuildContext ctxt, int index) {
+                            return  ContactListItem(contactsList[index]);
+                          }
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            : Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: ListView.builder(
+                      itemCount: contactsList.length,
+                      itemBuilder: (BuildContext ctxt, int index) {
+                        return  ContactListItem(contactsList[index]);
+                      }
+                  ),
+              );
   }
 }

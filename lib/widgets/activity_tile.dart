@@ -75,14 +75,14 @@ class _ActivityTileState extends State<ActivityTile> {
     }
     
     return Container (
-      margin: EdgeInsets.only(bottom: 4.0),
+      padding: EdgeInsets.only(bottom: 8.0),
       child: Row (
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(top: 22, right: 16.0),
+            padding: EdgeInsets.only(top: 12, right: 16.0),
             child: Stack(
               children: <Widget>[
                 CircleAvatar(
@@ -103,7 +103,6 @@ class _ActivityTileState extends State<ActivityTile> {
           ),
           Expanded(
             child: Column(
-              // margin: EdgeInsets.only(left: 16.0),
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[  
                 Text(activityCreatedAt(_activityObject),

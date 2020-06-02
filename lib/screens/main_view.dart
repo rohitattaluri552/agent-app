@@ -28,7 +28,7 @@ const List<Choice> choices = const <Choice>[
 ];
 
 class _MainViewState extends State<MainView> {
- final tabDetails = [
+  final tabDetails = [
     {'icon': OMIcons.home,'label': 'Home','view': HomeView()},
     {'icon': OMIcons.business, 'label': 'Listings', 'view': ListingView()},
     {'icon': OMIcons.group, 'label': 'Contacts', 'view': ContactsView()},

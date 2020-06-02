@@ -16,7 +16,7 @@ class _ActivitiesState extends State<Activities> {
   @override
   Widget build(BuildContext context) {
 
-    final _activities = [
+  final activities = [
     {
       "type": "checkin",
       "listingId": "c5ede796-bee0-4a3b-a3e6-2b682b38c908",
@@ -159,7 +159,7 @@ class _ActivitiesState extends State<Activities> {
     },
   ];
 
-  final activityItems = _activities.map((activity) => ActivityTile(activity: activity)).toList();
+  final activityItems = activities.map((activity) => ActivityTile(activity: activity)).toList();
 
     return Container(
       padding: EdgeInsets.only(top: 20.0, left: 16.0,right: 16.0,),
@@ -167,11 +167,6 @@ class _ActivitiesState extends State<Activities> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Container (
-            alignment: Alignment.topLeft,
-            margin: EdgeInsets.only(bottom: 24.0,),
-            child: Text('updates'.toUpperCase(), style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w400, color: textColor)),
-          ),
           Expanded(
             child: ListView(
               children: activityItems ?? Center(child: Container(child: Text('No activities yet!'),),),

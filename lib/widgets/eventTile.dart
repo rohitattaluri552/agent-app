@@ -52,16 +52,19 @@ class _EventTileState extends State<EventTile> {
     );
 
     Widget eventImage () {
-      return ShaderMask(
-        shaderCallback: (rect) {
-          return LinearGradient(
+      return Container(
+        foregroundDecoration: BoxDecoration(
+          gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.white, Colors.black87],
-          ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
-        },
-        blendMode: BlendMode.dstIn,
-        child: Card(
+            colors: [ 
+              Colors.transparent, 
+              Colors.black54
+            ],
+            stops: [0.5, 1],
+          ),
+        ),
+        child: Card (
           semanticContainer: true,
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Image.network(
