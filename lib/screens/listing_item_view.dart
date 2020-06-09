@@ -17,6 +17,8 @@ class ListingItemView extends StatefulWidget {
 class _ListingItemViewState extends State<ListingItemView> with TickerProviderStateMixin  {
 
   List<String> tabs = [ "Event", "Contacts", "Updates"];
+  
+  int tabIndex = 0;
 
   final List tabBarViews = [
     Container(child: Text('text')),
@@ -26,6 +28,13 @@ class _ListingItemViewState extends State<ListingItemView> with TickerProviderSt
       child: Activities(),
     )
   ];
+
+  // Get current tab Index from tab.dart on every tab changes
+  getTabIndex(index) {
+    setState(() {
+      tabIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +65,7 @@ class _ListingItemViewState extends State<ListingItemView> with TickerProviderSt
             ListingItemImage(listing: listing),
             Expanded(
               flex: 2,
-              child: TabsWidget(tabs: tabs, tabBarViews: tabBarViews)
+              child: TabsWidget(tabs: tabs, tabBarViews: tabBarViews, getTabIndex: getTabIndex,)
             )
           ],
         ),
