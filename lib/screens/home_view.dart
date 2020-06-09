@@ -24,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
             upcomingEvents(textColor),
             Container (
               alignment: Alignment.topLeft,
-              margin: EdgeInsets.only(bottom: 24.0,),
+              margin: EdgeInsets.only(bottom: 8.0,top: 16.0, left: 16.0),
               child: Text('updates'.toUpperCase(), style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w400, color: textColor)),
             ),
             Expanded(child: Activities(),),

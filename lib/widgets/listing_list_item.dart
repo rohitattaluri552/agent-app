@@ -18,11 +18,11 @@ class ListingListItem extends StatelessWidget {
     final textStyle = TextStyle(color: Theme.of(context).primaryColorDark);
     return GestureDetector (
       onTap: () { 
-          Navigator.pushNamed(
-            context,
-            ListingItemView.routeName,
-            arguments: ListingListItem(listing: listing,),
-          );
+        Navigator.pushNamed(
+          context,
+          ListingItemView.routeName,
+          arguments: ListingListItem(listing: listing,),
+        );
       },
       child: Container(
         height: cardHeight,

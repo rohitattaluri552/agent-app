@@ -172,7 +172,7 @@ class _ContactsViewState extends State<ContactsView> {
                       Expanded(
                         flex: 1,
                         child: ListView.builder(
-                          itemCount: contactsList.length,
+                          itemCount: contactsList.length ?? 0,
                           itemBuilder: (BuildContext ctxt, int index) {
                             return  ContactListItem(contactsList[index]);
                           }
@@ -182,7 +182,7 @@ class _ContactsViewState extends State<ContactsView> {
                   ),
                 ),
               )
-            : Container(
+            : Container (
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: ListView.builder(
                       itemCount: contactsList.length,

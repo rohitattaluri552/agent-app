@@ -1,3 +1,4 @@
+import 'package:agent_app/screens/contact_view_screen.dart';
 import 'package:agent_app/widgets/circular_avatar.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,13 @@ class _ContactListItemState extends State<ContactListItem> {
     }
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          ContactViewScreen.routeName,
+          arguments: ContactViewScreen(contact: contact),
+        );
+      },
       child: Container (
         margin: EdgeInsets.only(bottom: 16.0),
         color: Colors.transparent,
