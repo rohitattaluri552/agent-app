@@ -1,8 +1,8 @@
-import 'package:agent_app/screens/contacts_view.dart';
+import 'package:agent_app/screens/contacts_list_view.dart';
 import 'package:agent_app/widgets/activities.dart';
 import 'package:agent_app/widgets/listing_item_photo.dart';
 import 'package:agent_app/widgets/listing_list_item.dart';
-import 'package:agent_app/widgets/tabs.dart';
+import 'package:agent_app/widgets/tabs_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 class ListingItemView extends StatefulWidget {
@@ -10,18 +10,17 @@ class ListingItemView extends StatefulWidget {
   ListingItemView({Key key}) : super(key: key);
   static String routeName = 'listingItemView'; 
   
-  
   @override
   _ListingItemViewState createState() => _ListingItemViewState();
 }
 
 class _ListingItemViewState extends State<ListingItemView> with TickerProviderStateMixin  {
 
-  final List tabs = [ 'Events','Contacts','Updates'];
+  List<String> tabs = [ "Event", "Contacts", "Updates"];
 
   final List tabBarViews = [
     Container(child: Text('text')),
-    ContactsView(isScaffoldReq: false),
+    ContactsListView(isScaffoldReq: false),
     Container(
       color: Colors.grey[100],
       child: Activities(),
@@ -32,7 +31,6 @@ class _ListingItemViewState extends State<ListingItemView> with TickerProviderSt
   Widget build(BuildContext context) {
     final ListingListItem args = ModalRoute.of(context).settings.arguments;
     final listing = args.listing;
-    print(args);
     return Scaffold (
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.white,
@@ -57,7 +55,8 @@ class _ListingItemViewState extends State<ListingItemView> with TickerProviderSt
           children: <Widget>[
             ListingItemImage(listing: listing),
             Expanded(
-              child: TabsWidget(tabs: tabs, tabBarViews: tabBarViews, noOfTabs: 3)
+              flex: 2,
+              child: TabsWidget(tabs: tabs, tabBarViews: tabBarViews)
             )
           ],
         ),

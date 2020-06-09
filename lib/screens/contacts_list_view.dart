@@ -2,15 +2,15 @@ import 'package:agent_app/widgets/contacts_list_item.dart';
 import 'package:agent_app/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 
-class ContactsView extends StatefulWidget {
-  ContactsView({this.isScaffoldReq,Key key}) : super(key: key);
+class ContactsListView extends StatefulWidget {
+  ContactsListView({this.isScaffoldReq,Key key}) : super(key: key);
   final bool isScaffoldReq;
 
   @override
-  _ContactsViewState createState() => _ContactsViewState();
+  _ContactsListViewState createState() => _ContactsListViewState();
 }
 
-class _ContactsViewState extends State<ContactsView> {
+class _ContactsListViewState extends State<ContactsListView> {
   final List<dynamic> contactsList =[
     {
       "contactId": "b3cde832-4a0b-46c7-87ce-4aa214c57640",
@@ -174,7 +174,7 @@ class _ContactsViewState extends State<ContactsView> {
                         child: ListView.builder(
                           itemCount: contactsList.length ?? 0,
                           itemBuilder: (BuildContext ctxt, int index) {
-                            return  ContactListItem(contactsList[index]);
+                            return  ContactListItem(contact: contactsList[index]);
                           }
                         ),
                       ),
@@ -187,7 +187,7 @@ class _ContactsViewState extends State<ContactsView> {
                 child: ListView.builder(
                       itemCount: contactsList.length,
                       itemBuilder: (BuildContext ctxt, int index) {
-                        return  ContactListItem(contactsList[index]);
+                        return  ContactListItem(contact: contactsList[index]);
                       }
                   ),
               );

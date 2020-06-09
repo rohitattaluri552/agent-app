@@ -108,7 +108,9 @@ class _ActivityTileState extends State<ActivityTile> {
                 Text(activityCreatedAt(_activityObject),
                   style: TextStyle(color: Colors.grey[400], fontSize: 16.0, fontWeight: FontWeight.w400)
                 ),
+                SizedBox(height: 4.0),
                 getActivityDescription(_activityObject),
+                SizedBox(height: 8.0),
                 getActivityType(_activityObject['type']) == ActivityType.note
                   ? GestureDetector(
                     onTap: () => {

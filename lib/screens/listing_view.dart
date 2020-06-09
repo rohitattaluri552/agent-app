@@ -4,8 +4,8 @@ import 'package:agent_app/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 
 class ListingView extends StatefulWidget {
-  ListingView({Key key}) : super(key: key);
-
+  ListingView({this.view, Key key}) : super(key: key);
+  final String view;
   @override
   _ListingViewState createState() => _ListingViewState();
 }
@@ -214,16 +214,25 @@ class _ListingViewState extends State<ListingView> {
   @override
   Widget build(BuildContext context) {
 
-    final listingsWithSectionHeader = [ 
-      SectionTitle('My Listings'),
-      _listingsList.map((listing) => ListingListItem(listing: listing)).toList()
-    ]
-      .where((w) => w!= null)
-      .expand((f) => (f is List<Widget> ? f : <Widget>[f]))
-      .toList();
+    // This work only for contactViewScreen
+    getListingList() {
+      _listingsList.length = 1;
+      return  _listingsList.map((listing) => ListingListItem(listing: listing,)).toList();
+    }
+
+    final listingsWithSectionHeader = widget.view == null 
+                ? [ 
+                    SectionTitle('My Listings'),
+                    _listingsList.map((listing) => ListingListItem(listing: listing)).toList()
+                  ]
+                    .where((w) => w!= null)
+                    .expand((f) => (f is List<Widget> ? f : <Widget>[f]))
+                    .toList()
+                : getListingList();
+
 
     return Scaffold (
-      appBar: TitleBar(title: 'Listings'),
+      appBar: widget.view == null ? TitleBar(title: 'Listings') : null,
       body: ListView (
         padding: EdgeInsets.only(top: 16.0),
         scrollDirection: Axis.vertical,

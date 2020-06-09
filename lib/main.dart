@@ -1,4 +1,5 @@
 import 'package:agent_app/constants/styles.dart';
+import 'package:agent_app/screens/contact_view.dart';
 import 'package:agent_app/screens/listing_item_view.dart';
 import 'package:agent_app/screens/main_view.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       home: MainView(),
       routes: {
         ListingItemView.routeName: (context) => ListingItemView(),
+        ContactView.routeName: (context) => ContactView(),
       }
     );
   }

@@ -1,19 +1,15 @@
-import 'package:agent_app/screens/contact_view_screen.dart';
+import 'package:agent_app/screens/contact_view.dart';
 import 'package:agent_app/widgets/circular_avatar.dart';
 import 'package:flutter/material.dart';
 
-class ContactListItem extends StatefulWidget {
-  ContactListItem(this.contact,{Key key}) : super(key: key);
+class ContactListItem extends StatelessWidget {
+  ContactListItem({this.contact});
   final contact;
-  @override
-  _ContactListItemState createState() => _ContactListItemState();
-}
+  
 
-class _ContactListItemState extends State<ContactListItem> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final contact = widget.contact;
 
     String getContactInfo() {
       dynamic contactInfo = [contact['email'], contact['mobile']]
@@ -28,10 +24,10 @@ class _ContactListItemState extends State<ContactListItem> {
 
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
+        Navigator.pushNamed (
           context,
-          ContactViewScreen.routeName,
-          arguments: ContactViewScreen(contact: contact),
+          ContactView.routeName,
+          arguments: ContactListItem(contact: contact),
         );
       },
       child: Container (

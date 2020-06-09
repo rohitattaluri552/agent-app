@@ -2,8 +2,8 @@ import 'package:agent_app/widgets/activity_tile.dart';
 import 'package:flutter/material.dart';
 
 class Activities extends StatefulWidget {
-  Activities({Key key}) : super(key: key);
-
+  Activities({this.activityType,Key key}) : super(key: key);
+  final activityType;
   @override
   _ActivitiesState createState() => _ActivitiesState();
 }
@@ -159,7 +159,10 @@ class _ActivitiesState extends State<Activities> {
     },
   ];
 
-  final activityItems = activities.map((activity) => ActivityTile(activity: activity)).toList();
+  
+  final activityItems = widget?.activityType != null
+                          ? activities.map((activity) => activity['type'] == widget.activityType ? ActivityTile(activity: activity) : Container()).toList()
+                          : activities.map((activity) => ActivityTile(activity: activity)).toList();
 
     return Container(
       padding: EdgeInsets.only(top: 20.0, left: 16.0,right: 16.0,),
@@ -169,7 +172,7 @@ class _ActivitiesState extends State<Activities> {
         children: <Widget>[
           Expanded(
             child: ListView(
-              children: activityItems ?? Center(child: Container(child: Text('No activities yet!'),),),
+              children: activityItems ?? Padding(padding: EdgeInsets.only(left: 16.0,top: 16.0), child: Container(child: Text('No activities yet!'),),),
             ),
           )
         ],

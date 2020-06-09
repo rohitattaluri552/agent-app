@@ -1,4 +1,4 @@
-import 'package:agent_app/screens/contacts_view.dart';
+import 'package:agent_app/screens/contacts_list_view.dart';
 import 'package:agent_app/screens/home_view.dart';
 import 'package:agent_app/screens/listing_view.dart';
 import 'package:agent_app/screens/settings_view.dart';
@@ -31,7 +31,7 @@ class _MainViewState extends State<MainView> {
   final tabDetails = [
     {'icon': OMIcons.home,'label': 'Home','view': HomeView()},
     {'icon': OMIcons.business, 'label': 'Listings', 'view': ListingView()},
-    {'icon': OMIcons.group, 'label': 'Contacts', 'view': ContactsView()},
+    {'icon': OMIcons.group, 'label': 'Contacts', 'view': ContactsListView()},
     {'icon': Icons.more_horiz, 'label': 'More', 'view': SettingsView()},
   ];
 
