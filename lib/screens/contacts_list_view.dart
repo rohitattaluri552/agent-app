@@ -183,12 +183,13 @@ class _ContactsListViewState extends State<ContactsListView> {
                 ),
               )
             : Container (
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: ListView.builder(
-                      itemCount: contactsList.length,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        return  ContactListItem(contact: contactsList[index]);
-                      }
+                    padding: EdgeInsets.all(0.0),
+                    itemCount: contactsList.length,
+                    itemBuilder: (BuildContext ctxt, int index) {
+                      return  ContactListItem(contact: contactsList[index]);
+                    }
                   ),
               );
   }

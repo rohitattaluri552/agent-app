@@ -215,12 +215,12 @@ class _ListingViewState extends State<ListingView> {
   Widget build(BuildContext context) {
 
     // This work only for contactViewScreen
-    getListingList() {
+    getListingListForContactsView() {
       _listingsList.length = 1;
       return  _listingsList.map((listing) => ListingListItem(listing: listing,)).toList();
     }
 
-    final listingsWithSectionHeader = widget.view == null 
+    final listingsWithSectionHeader = widget.view != 'contacts'
                 ? [ 
                     SectionTitle('My Listings'),
                     _listingsList.map((listing) => ListingListItem(listing: listing)).toList()
@@ -228,15 +228,18 @@ class _ListingViewState extends State<ListingView> {
                     .where((w) => w!= null)
                     .expand((f) => (f is List<Widget> ? f : <Widget>[f]))
                     .toList()
-                : getListingList();
+                : getListingListForContactsView();
 
 
     return Scaffold (
-      appBar: widget.view == null ? TitleBar(title: 'Listings') : null,
-      body: ListView (
-        padding: EdgeInsets.only(top: 16.0),
-        scrollDirection: Axis.vertical,
-        children: listingsWithSectionHeader ?? Center(child: Container(child: Text('No activities yet!'),),),
+      appBar: widget.view != 'contacts' ? TitleBar(title: 'Listings') : null,
+      body: Padding(
+        padding: const EdgeInsets.all(0.0),
+        child: ListView (
+          padding: EdgeInsets.only(top: 16.0),
+          scrollDirection: Axis.vertical,
+          children: listingsWithSectionHeader ?? Center(child: Container(child: Text('No activities yet!'),),),
+        ),
       ),
     );
   }

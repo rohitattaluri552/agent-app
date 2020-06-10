@@ -4,7 +4,7 @@ class CircularAvatarWidget extends StatelessWidget {
   const CircularAvatarWidget(this.contact,{Key key}) : super(key: key);
   final contact;
   
-  String get name => [contact['firstNames'], contact['lastName']].where((w) => w != null).join(' ');
+  String get name => [contact['firstNames'], contact['lastNames']].where((w) => w != null).join(' ');
 
   String get initials => name
     .replaceAllMapped(RegExp(r'\b(\S)\S+'), (m) => m[1].toUpperCase())

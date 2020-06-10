@@ -165,14 +165,15 @@ class _ActivitiesState extends State<Activities> {
                           : activities.map((activity) => ActivityTile(activity: activity)).toList();
 
     return Container(
-      padding: EdgeInsets.only(top: 20.0, left: 16.0,right: 16.0,),
+      padding: EdgeInsets.only(top: 8.0, left: 16.0,right: 16.0,),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Expanded(
             child: ListView(
-              children: activityItems ?? Padding(padding: EdgeInsets.only(left: 16.0,top: 16.0), child: Container(child: Text('No activities yet!'),),),
+              padding: EdgeInsets.all(0),
+              children: activityItems ??  Container(child: Text('No activities yet!'),),
             ),
           )
         ],

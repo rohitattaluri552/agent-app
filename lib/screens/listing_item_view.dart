@@ -58,7 +58,25 @@ class _ListingItemViewState extends State<ListingItemView> with TickerProviderSt
             color: Colors.white,
             onPressed: () => Navigator.of(context).pop()
           ),
-          actions: <Widget>[],
+          actions: <Widget>[
+            PopupMenuButton (
+              icon: Icon(Icons.more_vert),
+              color: Colors.white,
+              onSelected: (value) => {
+
+              },
+              itemBuilder:(context) => [
+                PopupMenuItem(
+                  value: 'broadcast',
+                  child: Text('Broadcast message'),
+                ),
+                PopupMenuItem(
+                  value:'directions',
+                  child: Text('Get Directions')
+                ),
+              ],
+            ),
+          ],
         ),
         body: Column (
           children: <Widget>[
