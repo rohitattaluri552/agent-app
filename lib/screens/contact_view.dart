@@ -1,5 +1,7 @@
+import 'package:agent_app/screens/create_contact_form.dart';
 import 'package:agent_app/screens/listing_view.dart';
 import 'package:agent_app/widgets/activities.dart';
+import 'package:agent_app/widgets/add_or_edit_note.dart';
 import 'package:agent_app/widgets/circular_avatar.dart';
 import 'package:agent_app/widgets/contacts_list_item.dart';
 import 'package:agent_app/widgets/tabs_widget.dart';
@@ -98,32 +100,37 @@ class _ContactViewState extends State<ContactView> {
           onPressed: () => Navigator.of(context).pop()
         ),
         actions: [
-          Center(
-            child: Container(
-              padding: EdgeInsets.only(right: 16.0),
-              child: Text('Edit'.toUpperCase(), style: 
-                TextStyle(
-                  color: Theme.of(context).colorScheme.secondary,
-                  fontWeight: FontWeight.bold
-                ),  
+          FlatButton(
+            child: Text('EDIT', 
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 15.0,
               ),
-            ),
-          )
-        ]
-      ),
-      floatingActionButton: tabIndex != 2
-        ? null
-        : Padding(
-            padding: EdgeInsets.only(bottom: 8.0),
-            child: FloatingActionButton.extended(
-              icon: Icon(OMIcons.noteAdd),
-              label: Text('Add new note'),
-              backgroundColor: Theme.of(context).primaryColor,
-              onPressed: () => {
-                print('open note model'),
-              }
+            ), 
+            onPressed: () => Navigator.pushNamed(
+              context,
+              CreateContactForm.routeName, 
+              arguments: {contact: contact},
             ),
           ),
+        ]
+      ),
+        floatingActionButton: tabIndex != 2
+          ? null
+          : Padding(
+              padding: EdgeInsets.only(bottom: 8.0),
+              child: FloatingActionButton.extended(
+                icon: Icon(OMIcons.noteAdd),
+                label: Text('Add new note'),
+                backgroundColor: Theme.of(context).primaryColor,
+                onPressed: () => {
+                  Navigator.pushNamed(
+                    context,
+                    AddOrEditNote.routeName,
+                    arguments: AddOrEditNote(formType: 'createNote')
+                  ),
+                }
+              ),
+            ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Column(
         children: <Widget>[

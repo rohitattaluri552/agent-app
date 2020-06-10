@@ -46,9 +46,8 @@ class _ListingItemViewState extends State<ListingItemView> with TickerProviderSt
         floatingActionButton: FloatingActionButton(
           child: Icon(OMIcons.personPinCircle, size: 32.0,),
           backgroundColor: Theme.of(context).primaryColor,
-          onPressed: () => {
-            print('button clicked'),
-          },
+          onPressed: () => print('button clicked'),
+          
         ),
         appBar: AppBar(
           backgroundColor: Colors.transparent,

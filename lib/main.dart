@@ -1,7 +1,9 @@
 import 'package:agent_app/constants/styles.dart';
 import 'package:agent_app/screens/contact_view.dart';
+import 'package:agent_app/screens/create_contact_form.dart';
 import 'package:agent_app/screens/listing_item_view.dart';
 import 'package:agent_app/screens/main_view.dart';
+import 'package:agent_app/widgets/add_or_edit_note.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
       routes: {
         ListingItemView.routeName: (context) => ListingItemView(),
         ContactView.routeName: (context) => ContactView(),
+        AddOrEditNote.routeName: (context) => AddOrEditNote(),
+        CreateContactForm.routeName: (context) => CreateContactForm(),
       }
     );
   }

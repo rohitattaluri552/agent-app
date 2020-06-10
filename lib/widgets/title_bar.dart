@@ -21,7 +21,7 @@ class _TitleBarState extends State<TitleBar> {
 
   @override
   Widget build(BuildContext context) {
-    final searchActions = <Widget>[
+    final searchActions = <Widget> [
       IconButton(
         icon: Icon(_showSearch ? Icons.close : Icons.search, color: Theme.of(context).primaryColor,),
         onPressed: () {
@@ -32,14 +32,14 @@ class _TitleBarState extends State<TitleBar> {
       ) 
     ];
     
-    final actions = searchActions;
+    final _actions = searchActions;
 
-    return AppBar(
+    return AppBar (
       backgroundColor: Colors.white,
       brightness: Theme.of(context).brightness,
       elevation: 3.0,
       centerTitle: true,
-      actions: actions,
+      actions: _actions,
       title: _showSearch 
               ? Container()
               : Text(
