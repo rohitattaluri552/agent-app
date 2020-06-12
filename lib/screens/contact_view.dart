@@ -1,4 +1,4 @@
-import 'package:agent_app/screens/create_contact_form.dart';
+import 'package:agent_app/screens/create_or_edit_contact.dart';
 import 'package:agent_app/screens/listing_view.dart';
 import 'package:agent_app/widgets/activities.dart';
 import 'package:agent_app/widgets/add_or_edit_note.dart';
@@ -89,6 +89,7 @@ class _ContactViewState extends State<ContactView> {
   Widget build(BuildContext context) {
     final ContactListItem args = ModalRoute.of(context).settings.arguments;
     final contact = args.contact;
+    final formType = 'editContact';
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
@@ -108,8 +109,8 @@ class _ContactViewState extends State<ContactView> {
             ), 
             onPressed: () => Navigator.pushNamed(
               context,
-              CreateContactForm.routeName, 
-              arguments: {contact: contact},
+              CreateOrEditContact.routeName, 
+              arguments: {'contact': contact, 'formType': formType,},
             ),
           ),
         ]
@@ -135,7 +136,7 @@ class _ContactViewState extends State<ContactView> {
       body: Column(
         children: <Widget>[
           contactProfile(contact),
-          SizedBox(height: 8.0),
+          SizedBox(height: 16.0),
           Expanded(
             child: TabsWidget(view: 'contactView', tabs: tabs,tabBarViews: tabBarViews, needPadding: false, getTabIndex: getTabIndex),
           )

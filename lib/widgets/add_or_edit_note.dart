@@ -1,3 +1,4 @@
+import 'package:agent_app/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -21,6 +22,7 @@ class _AddOrEditNoteState extends State<AddOrEditNote> {
   
   TextEditingController noteController;
   String note;
+  
   @override
   void initState() {
     note = '';
@@ -36,33 +38,22 @@ class _AddOrEditNoteState extends State<AddOrEditNote> {
 
   @override
   Widget build(BuildContext context) {
-  
+    
+    goBack() {
+      Navigator.of(context).pop();
+    }
+    
+    final appBar = AppBarwidget(
+        backgroundColor: Colors.grey[100],
+        actionName: 'DONE',
+        title: 'Add Note',
+        centerTitle: true,
+        onChange: goBack,
+    );
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar (
-        iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
-        ),
-        backgroundColor: Colors.grey[100],
-        actions: <Widget>[
-          FlatButton(
-            child: Text('DONE', 
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 15.0,
-              ),
-            ), 
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-        ],
-        centerTitle: true,
-        title: Text(
-          'Add note', 
-          style: TextStyle(
-            color: Theme.of(context).primaryColor, fontWeight: FontWeight.w500,
-            fontSize: 22.0
-          ),
-        ),
-      ),
+      appBar: appBar,
       body: Container(
         color: Theme.of(context).canvasColor,
         padding: EdgeInsets.all(16.0),
