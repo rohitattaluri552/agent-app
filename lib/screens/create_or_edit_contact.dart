@@ -22,8 +22,10 @@ class _CreateOrEditContactState extends State<CreateOrEditContact> {
   @override
   Widget build(BuildContext context) {
     final Map args = ModalRoute.of(context).settings.arguments as Map;
+
     final formType = args['formType'];
     final contact = args['contact'];
+    
     final formTitle = formType == 'editContact' ? 'Edit contact' : 'Create contact';
 
     FocusNode f1 = FocusNode();

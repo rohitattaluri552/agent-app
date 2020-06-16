@@ -44,11 +44,11 @@ class _AddOrEditNoteState extends State<AddOrEditNote> {
     }
     
     final appBar = AppBarwidget(
-        backgroundColor: Colors.grey[100],
-        actionName: 'DONE',
-        title: 'Add Note',
-        centerTitle: true,
-        onChange: goBack,
+      backgroundColor: Colors.grey[100],
+      actionName: 'DONE',
+      title: 'Add Note',
+      centerTitle: true,
+      onChange: goBack,
     );
 
     return Scaffold(

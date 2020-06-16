@@ -1,4 +1,5 @@
 import 'package:agent_app/constants/styles.dart';
+import 'package:agent_app/screens/broadcast_message_view.dart';
 import 'package:agent_app/screens/contact_view.dart';
 import 'package:agent_app/screens/create_or_edit_contact.dart';
 import 'package:agent_app/screens/listing_item_view.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         ContactView.routeName: (context) => ContactView(),
         AddOrEditNote.routeName: (context) => AddOrEditNote(),
         CreateOrEditContact.routeName: (context) => CreateOrEditContact(),
+        BroadcastMessageView.routeName: (context) => BroadcastMessageView(),
       }
     );
   }

@@ -7,7 +7,8 @@ class TabsWidget extends StatefulWidget {
     this.tabs,
     this.needPadding = true,
     this.getTabIndex, 
-    this.view
+    this.view,
+    this.initialTab,
   });
   
   final List tabBarViews;
@@ -15,6 +16,7 @@ class TabsWidget extends StatefulWidget {
   final bool needPadding;
   final Function(int) getTabIndex;
   final String view;
+  final int initialTab;
 
   @override
   _TabsWidgetState createState() => _TabsWidgetState();
@@ -25,7 +27,8 @@ class _TabsWidgetState extends State<TabsWidget> with SingleTickerProviderStateM
 
   @override
   void initState() { 
-    _tabController = TabController(vsync: this, length: widget.tabs.length, initialIndex: 0);
+    _tabController = TabController(vsync: this, length: widget?.tabs?.length, initialIndex: widget?.initialTab ?? 0);
+    
     // Getting the current tab index and passing back to the parent widget using getTabIndex function
     _tabController.addListener(() {
       setState(() => widget.getTabIndex(_tabController.index));

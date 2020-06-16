@@ -1,5 +1,5 @@
 import 'package:agent_app/widgets/activities.dart';
-import 'package:agent_app/widgets/eventTile.dart';
+import 'package:agent_app/widgets/event_tile.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
