@@ -10,6 +10,8 @@ class AppBarwidget extends StatefulWidget implements PreferredSizeWidget {
     this.iconTheme,
     this.actionName,
     this.onChange,
+    this.elevation,
+    this.leadingIcon
   });
 
   final String actionName;
@@ -19,8 +21,8 @@ class AppBarwidget extends StatefulWidget implements PreferredSizeWidget {
   final bool centerTitle;
   final IconTheme iconTheme;
   final Function onChange;
-
-
+  final dynamic leadingIcon;
+  final elevation;
   @override
   _AppBarwidgetState createState() => _AppBarwidgetState();
 
@@ -35,8 +37,9 @@ class _AppBarwidgetState extends State<AppBarwidget> {
   Widget build(BuildContext context) {
     return AppBar(
       iconTheme: widget.iconTheme ?? IconThemeData(
-          color: Colors.black, //change your color here
+        color: Colors.black, //change your color here
       ),
+      leading: widget.leadingIcon ?? Icon(Icons.arrow_back),
       centerTitle: widget.centerTitle ?? true,
       backgroundColor: widget.backgroundColor ?? Colors.white,
       title: Text(
@@ -46,8 +49,7 @@ class _AppBarwidgetState extends State<AppBarwidget> {
           fontSize: 22.0
         ),
       ),
-      actions: 
-      widget.actions ?? [
+      actions: widget.actions ?? [
         FlatButton(
           child: Text(
             widget?.actionName, 
