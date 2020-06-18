@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AppBarwidget extends StatefulWidget implements PreferredSizeWidget {
-  AppBarwidget({
-    Key key,
-    this.backgroundColor,
-    this.title,
-    this.actions,
-    this.centerTitle,
-    this.iconTheme,
-    this.actionName,
-    this.onChange,
-    this.elevation,
-    this.leadingIcon
-  });
+  AppBarwidget(
+      {Key key,
+      this.backgroundColor,
+      this.title,
+      this.actions,
+      this.centerTitle,
+      this.iconTheme,
+      this.actionName,
+      this.onChange,
+      this.elevation,
+      this.leadingIcon});
 
   final String actionName;
   final Color backgroundColor;
@@ -31,35 +30,42 @@ class AppBarwidget extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _AppBarwidgetState extends State<AppBarwidget> {
-
-  
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      iconTheme: widget.iconTheme ?? IconThemeData(
-        color: Colors.black, //change your color here
-      ),
-      leading: widget.leadingIcon ?? Icon(Icons.arrow_back),
+      iconTheme: widget.iconTheme ??
+          IconThemeData(
+            color: Colors.black, //change your color here
+          ),
+      leading: widget.leadingIcon ??
+          IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.black,
+            onPressed: () => Navigator.of(context).pop(),
+          ),
       centerTitle: widget.centerTitle ?? true,
       backgroundColor: widget.backgroundColor ?? Colors.white,
       title: Text(
         widget.title,
         style: TextStyle(
-          color: Theme.of(context).primaryColor, fontWeight: FontWeight.w500,
-          fontSize: 22.0
-        ),
+            color: Theme.of(context).primaryColor,
+            fontWeight: FontWeight.w500,
+            fontSize: 22.0),
       ),
-      actions: widget.actions ?? [
-        FlatButton(
-          child: Text(
-            widget?.actionName, 
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.secondary, fontWeight: FontWeight.bold, fontSize: 15.0,
-            ),
-          ), 
-          onPressed: widget.onChange,
-        )
-      ],
+      actions: widget.actions ??
+          [
+            FlatButton(
+              child: Text(
+                widget?.actionName,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0,
+                ),
+              ),
+              onPressed: widget.onChange,
+            )
+          ],
     );
   }
 }

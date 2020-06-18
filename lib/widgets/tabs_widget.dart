@@ -53,11 +53,11 @@ class _TabsWidgetState extends State<TabsWidget> with SingleTickerProviderStateM
           color: widget.view == 'contactView' ? Colors.grey[100] : Theme.of(context).canvasColor,
           child: TabBar (
             controller: _tabController,
-            indicatorColor: Theme.of(context).colorScheme.secondary,
+            indicatorColor: Theme.of(context).colorScheme.primary,
             labelColor: Theme.of(context).colorScheme.secondary,
             unselectedLabelColor: Theme.of(context).primaryColor,
             tabs: List<Widget>.generate(widget?.tabs?.length, (int index) {
-                return Tab(
+                return Tab (
                   child: Text(widget?.tabs[index],
                       style: TextStyle(
                           fontWeight: FontWeight.w500, fontSize: 15.0
