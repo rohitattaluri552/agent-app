@@ -13,10 +13,7 @@ class _CreateOrEditContactState extends State<CreateOrEditContact> {
 
   GlobalKey<FormState> _createContactformKey = GlobalKey<FormState>();
 
-  
-
   TextEditingController firstNameController;
-  String note;
   
   
   @override

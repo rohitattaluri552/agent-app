@@ -126,56 +126,61 @@ class _ContactViewState extends State<ContactView> {
       ],
     );
     return Scaffold(
-        backgroundColor: Colors.grey[100],
-        appBar: _appbar,
-        floatingActionButton: currentTabIndex != 2
-            ? null
-            : Padding(
-                padding: EdgeInsets.only(bottom: 8.0),
-                child: FloatingActionButton.extended(
-                    icon: Icon(OMIcons.noteAdd),
-                    label: Text('Add new note'),
-                    backgroundColor: Theme.of(context).primaryColor,
-                    onPressed: () => {
-                          Navigator.pushNamed(context, AddOrEditNote.routeName,
-                              arguments: AddOrEditNote(formType: 'createNote')),
-                        }),
-              ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        body: NestedScrollView(
-          headerSliverBuilder: (BuildContext bc, bool innerBoxIsScrolled) {
-            return [
-              SliverAppBar(
-                leading: Container(),
-                backgroundColor: Colors.transparent,
-                expandedHeight: 225.0,
-                flexibleSpace: FlexibleSpaceBar(
-                  collapseMode: CollapseMode.pin,
-                  background: Column(
-                    children: <Widget>[
-                      contactProfile(contact),
-                      SizedBox(height: 16.0),
-                    ],
-                  ),
+      backgroundColor: Colors.grey[100],
+      appBar: _appbar,
+      floatingActionButton: currentTabIndex != 2
+          ? null
+          : Padding(
+              padding: EdgeInsets.only(bottom: 8.0),
+              child: FloatingActionButton.extended(
+                  icon: Icon(OMIcons.noteAdd),
+                  label: Text('Add new note'),
+                  backgroundColor: Theme.of(context).primaryColor,
+                  onPressed: () => {
+                        Navigator.pushNamed(
+                          context,
+                          AddOrEditNote.routeName,
+                          arguments: {
+                            'formType': 'createNote',
+                          },
+                        ),
+                      }),
+            ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext bc, bool innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              leading: Container(),
+              backgroundColor: Colors.transparent,
+              expandedHeight: 225.0,
+              flexibleSpace: FlexibleSpaceBar(
+                collapseMode: CollapseMode.pin,
+                background: Column(
+                  children: <Widget>[
+                    contactProfile(contact),
+                    SizedBox(height: 16.0),
+                  ],
                 ),
               ),
-            ];
-          },
-          // body: Container(),
-          body: Column(
-            children: <Widget>[
-              Expanded(
-                child: TabsWidget(
-                    view: '',
-                    tabs: tabs,
-                    tabBarViews: tabBarViews,
-                    needPadding: false,
-                    getTabIndex: getTabIndex,
-                  ),
-              )
-            ],
-          ),
+            ),
+          ];
+        },
+        // body: Container(),
+        body: Column(
+          children: <Widget>[
+            Expanded(
+              child: TabsWidget(
+                viewName: '',
+                tabs: tabs,
+                tabBarViews: tabBarViews,
+                needPadding: false,
+                getTabIndex: getTabIndex,
+              ),
+            )
+          ],
         ),
-      );
+      ),
+    );
   }
 }

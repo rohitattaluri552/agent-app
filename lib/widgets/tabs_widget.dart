@@ -7,7 +7,7 @@ class TabsWidget extends StatefulWidget {
     this.tabs,
     this.needPadding = true,
     this.getTabIndex, 
-    this.view,
+    this.viewName,
     this.initialTab,
   });
   
@@ -15,7 +15,7 @@ class TabsWidget extends StatefulWidget {
   final List tabs;
   final bool needPadding;
   final Function(int) getTabIndex;
-  final String view;
+  final String viewName;
   final int initialTab;
 
   @override
@@ -50,7 +50,7 @@ class _TabsWidgetState extends State<TabsWidget> with SingleTickerProviderStateM
       children: <Widget>[
         Container(
           padding: widget.needPadding ? EdgeInsets.only(top:16.0,left: 16.0,right: 16.0) : EdgeInsets.all(0.0),
-          color: widget.view == 'contactView' ? Colors.grey[100] : Theme.of(context).canvasColor,
+          color: widget?.viewName == 'contactView' ? Colors.grey[100] : Theme.of(context).canvasColor,
           child: TabBar (
             controller: _tabController,
             indicatorColor: Theme.of(context).colorScheme.primary,

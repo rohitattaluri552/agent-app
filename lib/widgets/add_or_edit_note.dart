@@ -2,17 +2,9 @@ import 'package:agent_app/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-enum FormType { edit, create }
-
-final noteFormType = {
-  FormType.edit : 'editNote',
-  FormType.create: 'createNote'
-};
-
 class AddOrEditNote extends StatefulWidget {
+  const AddOrEditNote({Key key}) : super(key: key);
   static String routeName = 'addOrEditNote';
-  const AddOrEditNote({this.formType,Key key}) : super(key: key);
-  final String formType;
 
   @override
   _AddOrEditNoteState createState() => _AddOrEditNoteState();
@@ -25,7 +17,7 @@ class _AddOrEditNoteState extends State<AddOrEditNote> {
   
   @override
   void initState() {
-    note = '';
+    note = 'faaa';
     noteController = TextEditingController(text: note);
     // to track the changes in input
     noteController.addListener(() {
@@ -38,30 +30,37 @@ class _AddOrEditNoteState extends State<AddOrEditNote> {
 
   @override
   Widget build(BuildContext context) {
-    
+    final Map args = ModalRoute.of(context).settings.arguments as Map;
+
+    final formType = args['formType'];
+    note = args['noteText'];
+
+    final formTitle = formType != 'editNote' ? 'Create Note' : 'Edit Note';
+
     goBack() {
       Navigator.of(context).pop();
     }
-    
+  
     final appBar = AppBarwidget(
       backgroundColor: Colors.grey[100],
       actionName: 'DONE',
-      title: 'Add Note',
+      title: formTitle,
       centerTitle: true,
       onChange: goBack,
     );
 
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[300],
       appBar: appBar,
       body: Container(
         color: Theme.of(context).canvasColor,
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            TextField(
+            TextFormField(
               textInputAction: TextInputAction.newline,
-              controller: noteController,
+              initialValue: note,
+              // controller: noteController,
               decoration: InputDecoration(
                 hintText: 'Contact notes',
                 hasFloatingPlaceholder: false,

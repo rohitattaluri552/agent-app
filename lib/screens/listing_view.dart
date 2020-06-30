@@ -1,3 +1,4 @@
+import 'package:agent_app/widgets/app_drawer.dart';
 import 'package:agent_app/widgets/listing_list_item.dart';
 import 'package:agent_app/widgets/section_title.dart';
 import 'package:agent_app/widgets/title_bar.dart';
@@ -232,6 +233,7 @@ class _ListingViewState extends State<ListingView> {
 
 
     return Scaffold (
+      drawer: AppDrawer(),
       appBar: widget.view != 'contacts' ? TitleBar(title: 'Listings') : null,
       body: Padding(
         padding: const EdgeInsets.all(0.0),

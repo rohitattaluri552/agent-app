@@ -21,13 +21,14 @@ class Style {
   static const double borderRadiusExtraSmall = 4.0;
   static const double elevation = 0;
 
-  static final Color _primaryColor = Color(0xff2f434e);
+  static final Color _primaryColor = Color(0xff080C11);
   static final Color _primaryColorLight = Color(0xffdfe7ec);
   static final Color _primaryColorDark = Color(0xff3a525f);
   static final Color _contrastingTextColor = Color(0xffffffff);
   static final Color _accentTextColor = Color(0xff60899f);
   static final Color _backgroundColor = Color(0xffe6e8ea);
   static final Color _secondaryColor = Color(0xffeb6057);
+  static final Color _highlighter = Color(0xff81aaf7);
 
   static final Color _secondaryColorDark = Color(0xff280301);
   static final Color _errorColor = Color(0xffd32f2f);
@@ -80,7 +81,7 @@ class Style {
       primaryVariant: _primaryColorLight,
       background: _backgroundColor,
       onBackground: _primaryColorDark,
-      secondary: _secondaryColor,
+      secondary: _highlighter,
       onSecondary: _contrastingTextColor,
       secondaryVariant: _secondaryColorDark,
       error: _errorColor,

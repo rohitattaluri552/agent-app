@@ -1,5 +1,7 @@
 import 'package:agent_app/widgets/activities.dart';
+import 'package:agent_app/widgets/app_drawer.dart';
 import 'package:agent_app/widgets/event_tile.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -15,13 +17,16 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      drawer: AppDrawer(),
       body: NestedScrollView(
+        dragStartBehavior: DragStartBehavior.down,
         headerSliverBuilder: (BuildContext bc, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
               leading: Container(),
               backgroundColor: Colors.transparent,
-              expandedHeight: 385.0,
+              expandedHeight: 389.0,
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.pin,
                 background: Column(
@@ -32,6 +37,7 @@ class _HomeViewState extends State<HomeView> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           welcomeNote(textColor),
+                          SizedBox(height: 16.0),
                           upcomingEvents(textColor),
                         ],
                       ),
@@ -47,12 +53,15 @@ class _HomeViewState extends State<HomeView> {
           children: [
             Container(
               alignment: Alignment.topLeft,
-              margin: EdgeInsets.only(bottom: 8.0, top: 16.0, left: 16.0),
-              child: Text('updates'.toUpperCase(),
-                  style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w400,
-                      color: textColor)),
+              padding: EdgeInsets.only(bottom: 16.0, top: 16.0, left: 16.0),
+              child: Text(
+                'Activity feed',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w400,
+                  color: textColor,
+                ),
+              ),
             ),
             Expanded(
               child: Activities(),
@@ -65,14 +74,39 @@ class _HomeViewState extends State<HomeView> {
 
   Widget welcomeNote(textColor) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-      child: Text(
-        'Hi, Rohit!',
-        style: TextStyle(
-          fontSize: 24.0,
-          color: textColor,
-          fontWeight: FontWeight.w400,
-        ),
+      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 0.0),
+      child: Row(
+        children: <Widget>[
+          Container(
+            width: 45.0,
+            height: 45.0,
+
+            ///Another way to build a rounded image
+
+            // decoration: BoxDecoration(
+            //   shape: BoxShape.circle,
+            //   image: DecorationImage(
+            //     fit: BoxFit.cover,
+            //     image: NetworkImage('https://www.woolha.com/media/2019/06/buneary.jpg'),
+            //   ),
+            // ),
+            child: ClipOval(
+              child: Image.asset('assets/images/placeholder.png',
+                  fit: BoxFit.fill),
+            ),
+          ),
+          SizedBox(
+            width: 8,
+          ),
+          Text(
+            'Hi, Rohit',
+            style: TextStyle(
+              fontSize: 36.0,
+              color: Color(0xff080c11),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -109,20 +143,43 @@ class _HomeViewState extends State<HomeView> {
       Container(
         alignment: Alignment.topLeft,
         margin: EdgeInsets.only(bottom: 16.0, left: 16.0),
-        child: Text('upcoming'.toUpperCase(),
-            style: TextStyle(
-                fontSize: 18.0, fontWeight: FontWeight.w400, color: textColor)),
+        child: Row(
+          children: <Widget>[
+            Text(
+              'Upcoming Opens',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[900],
+              ),
+            ),
+            SizedBox(width: 4.0),
+            eventDetails.length != 0
+                ? Text(
+                    '(${eventDetails.length})',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 16.0,
+                    ),
+                  )
+                : Container(),
+          ],
+        ),
       ),
       Container(
         height: eventTileHeight,
         margin: EdgeInsets.only(right: 8.0),
-        child: PageView(
-          controller: PageController(
-            initialPage: 1,
-            viewportFraction: .95,
-          ),
-          children: events,
-        ),
+        child: eventDetails.length != 0
+            ? PageView(
+                controller: PageController(
+                  initialPage: 1,
+                  viewportFraction: .95,
+                ),
+                children: events ?? null,
+              )
+            : EventTile(
+                event: null,
+              ),
       ),
     ]);
   }

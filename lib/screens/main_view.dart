@@ -1,7 +1,6 @@
 import 'package:agent_app/screens/contacts_list_view.dart';
 import 'package:agent_app/screens/home_view.dart';
 import 'package:agent_app/screens/listing_view.dart';
-import 'package:agent_app/screens/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 
@@ -18,30 +17,40 @@ class Choice {
   final IconData icon;
 }
 
-const List<Choice> choices = const <Choice>[
-  const Choice(title: 'CAR', icon: Icons.directions_car),
-  const Choice(title: 'BICYCLE', icon: Icons.directions_bike),
-  const Choice(title: 'BOAT', icon: Icons.directions_boat),
-  const Choice(title: 'BUS', icon: Icons.directions_bus),
-  const Choice(title: 'TRAIN', icon: Icons.directions_railway),
-  const Choice(title: 'WALK', icon: Icons.directions_walk),
-];
 
-class _MainViewState extends State<MainView> {
+class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin {
+  
+  TabController _tabController;
+  int tabIndex = 0;
+  void initState() { 
+    _tabController = TabController(vsync: this, length: tabDetails.length, initialIndex: 0);
+    
+    // Getting the current tab index and passing back to the parent widget using getTabIndex function
+    _tabController.addListener(() {
+      setState(() => tabIndex = _tabController.index);
+    });
+    super.initState();
+  }
+
   final tabDetails = [
     {'icon': OMIcons.home,'label': 'Home','view': HomeView()},
     {'icon': OMIcons.business, 'label': 'Listings', 'view': ListingView()},
     {'icon': OMIcons.group, 'label': 'Contacts', 'view': ContactsListView()},
-    {'icon': Icons.more_horiz, 'label': 'More', 'view': SettingsView()},
   ];
 
-  List<Widget> _tabs(Color primaryColor) {
+  List<Widget> _tabs(Color selectedMenuColor, {Color unSelectedMenuColor,int currentTabIndex}) {
     return tabDetails
-        .map((menuItem) => Tab(
-              icon: Icon(menuItem['icon']),
+      .map((menuItem) => tabDetails.indexOf(menuItem) == currentTabIndex
+          ? Tab(
+              icon: Icon(menuItem['icon'], color: selectedMenuColor),
               text: menuItem['label'],
-            ))
-        .toList();
+            )
+          :  Tab(
+              icon: Icon(menuItem['icon'], color: unSelectedMenuColor),
+              text: menuItem['label'],
+            ),
+          )
+      .toList();
   }
 
   List<Widget> _tabViews() {
@@ -51,9 +60,9 @@ class _MainViewState extends State<MainView> {
   
   @override
   Widget build(BuildContext context) {
-    Color primaryColor = Theme.of(context).primaryColor;
     Color indicatorColor = Theme.of(context).colorScheme.secondary;
-
+    Color labelColor = Colors.black;
+    Color unSelectedColor = Color(0xff7A7E85);
     return DefaultTabController(
       length: tabDetails.length,
       child: SafeArea(
@@ -64,11 +73,13 @@ class _MainViewState extends State<MainView> {
             children: _tabViews(),
           ),
           bottomNavigationBar: TabBar(
-            tabs: _tabs(primaryColor),
+            controller: _tabController,
+            tabs: _tabs(indicatorColor),
             indicatorColor: indicatorColor,
-            indicatorWeight: 4.0,
-            labelColor: indicatorColor,
-            unselectedLabelColor: Colors.black45,
+            indicatorWeight: 0.1,
+            labelColor: labelColor,
+            labelStyle: TextStyle(fontWeight: FontWeight.w700),
+            unselectedLabelColor: unSelectedColor,
           ),
         ),
       )
